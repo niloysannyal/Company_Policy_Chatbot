@@ -6,3 +6,4 @@ google-generativeai         # optional (only if using Gemini)
 numpy
 nltk
 chromadb
+fastapi==0.119.0
