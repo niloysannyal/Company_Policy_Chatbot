@@ -127,3 +127,7 @@ db_faiss/
 *.parquet
 *.npy
 *.npz
+
+# === Allow vector database folder to be committed ===
+!vector_db/
+!vector_db/**
