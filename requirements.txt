@@ -1,0 +1,8 @@
+sentence-transformers==2.2.2
+transformers==4.40.0
+tqdm
+python-dotenv
+google-generativeai         # optional (only if using Gemini)
+numpy
+nltk
+chromadb

@@ -1,0 +1,129 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ======================
+# Virtual Environments
+# ======================
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ======================
+# Jupyter Notebooks
+# ======================
+.ipynb_checkpoints
+
+# ======================
+# PyInstaller
+# ======================
+*.manifest
+*.spec
+
+# ======================
+# Unit test / coverage reports
+# ======================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ======================
+# MyPy / Type checking
+# ======================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# ======================
+# Logs and temp files
+# ======================
+*.log
+*.pot
+*.tmp
+*.swp
+*.bak
+*.old
+
+# ======================
+# System Files
+# ======================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ======================
+# IDE / Editor configs
+# ======================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ======================
+# Streamlit / Cache
+# ======================
+.streamlit/
+.streamlit_cache/
+.streamlit_cache_data/
+
+# ======================
+# Build / Dist files
+# ======================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ======================
+# Model artifacts / Large data
+# ======================
+artifacts/
+checkpoints/
+models/
+*.pkl
+*.h5
+*.pt
+*.ckpt
+
+# ======================
+# FAISS / LangChain / Embedding Stores
+# ======================
+faiss_index/
+vectorstore/
+db_faiss/
+*.faiss
+*.bin
+
+# ======================
+# Misc
+# ======================
+*.sqlite3
+*.db
+*.zip
+*.tar
+*.tar.gz
+*.csv
+*.json
+*.parquet
+*.npy
+*.npz
