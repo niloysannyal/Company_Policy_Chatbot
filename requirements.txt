@@ -3,6 +3,10 @@ fastapi==0.119.0
 uvicorn[standard]==0.37.0
 
 # === Embeddings & Vector DB ===
+# Force lightweight CPU-only PyTorch to avoid installing CUDA (saves ~3GB)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.3.1+cpu
+
 sentence-transformers==5.1.1
 huggingface-hub==0.35.3
 chromadb==1.1.1
