@@ -1,9 +1,17 @@
-sentence-transformers==2.2.2
-transformers==4.40.0
-tqdm
-python-dotenv
-google-generativeai         # optional (only if using Gemini)
-numpy
-nltk
-chromadb
+# === Core API Framework ===
 fastapi==0.119.0
+uvicorn[standard]==0.37.0
+
+# === Embeddings & Vector DB ===
+sentence-transformers==5.1.1
+huggingface-hub==0.35.3
+chromadb==1.1.1
+numpy==1.26.4
+tqdm==4.67.1
+
+# === Utility Libraries ===
+python-dotenv==1.1.1
+pydantic==2.12.0
+
+# === Optional: Gemini AI (safe import even if not used) ===
+google-generativeai==0.8.5
