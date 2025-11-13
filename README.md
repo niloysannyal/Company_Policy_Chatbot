@@ -2,6 +2,16 @@
 
 A **Retrieval-Augmented Generation (RAG)** chatbot that provides quick and accurate answers about **company policies** using a local **Chroma vector database**, **SentenceTransformer embeddings**, and optional integration with **Google Gemini** for natural and contextual responses.
 
+## 🌐 Live Demo
+
+<p align="center">
+  <a href="https://company-policy-chatbot.vercel.app/" target="_blank">
+    <img width="1919" height="1081" alt="Screenshot (204)" src="https://github.com/user-attachments/assets/56ca23fd-de04-44a9-bd6c-a3996d175072" />
+    <img src="https://img.shields.io/badge/🚀%20Live%20Website-Company%20Policy%20Chatbot-orange?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Website Button"/>
+  </a>
+</p>
+
+
 ---
 
 ## 🧠 Overview
