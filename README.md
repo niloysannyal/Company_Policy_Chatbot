@@ -6,11 +6,10 @@ A **Retrieval-Augmented Generation (RAG)** chatbot that provides quick and accur
 
 <p align="center">
   <a href="https://company-policy-chatbot.vercel.app/" target="_blank">
-    <img width="1919" height="1081" alt="Screenshot (204)" src="https://github.com/user-attachments/assets/56ca23fd-de04-44a9-bd6c-a3996d175072" />
-    <img src="https://img.shields.io/badge/🚀%20Live%20Website-Company%20Policy%20Chatbot-orange?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Website Button"/>
+    <img width="1920" height="1078" alt="Screenshot (206)" src="https://github.com/user-attachments/assets/ba95150c-7fb9-4cca-b65d-e60c5eccc060" />
+    <img src="https://img.shields.io/badge/Live%20Website-Policy%20Assistant-orange?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Live Website Button"/>
   </a>
 </p>
-
 
 ---
 
