@@ -580,12 +580,12 @@
     </div>
 
     <script>
-        const API_URL = "https://company-policy-chatbot.up.railway.app/ask";
+        const API_URL = "http://company-policy-chatbot.up.railway.app/ask";
 
         const state = {
             conversation: [],
             history: [],
-            conversationCounter: 1,
+            conversationId: null,
             isLoading: false,
             isDarkMode: true,
             sidebarOpen: true,
@@ -645,30 +645,40 @@
 
         function archiveCurrentConversation() {
             if (state.conversation.length === 0) return;
-            const title = deriveConversationTitle(state.conversation, `Conversation ${state.conversationCounter}`);
-            state.history.unshift({ title, messages: [...state.conversation] });
-            state.history = state.history.slice(0, 10);
-            state.conversationCounter += 1;
+            const title = deriveConversationTitle(state.conversation, `Conversation`);
+            state.history.unshift({
+                id: Date.now(),
+                title,
+                messages: [...state.conversation]
+            });
         }
 
         function startNewConversation() {
-            archiveCurrentConversation();
             state.conversation = [];
+            state.conversationId = null;
             state.isLoading = false;
             render();
         }
 
-        function resumeConversation(index) {
-            const entry = state.history[index];
-            state.history.splice(index, 1);
+        function resumeConversation(id) {
+            const entryIndex = state.history.findIndex(entry => entry.id === id);
+            if (entryIndex === -1) return;
+
+            const entry = state.history[entryIndex];
             state.conversation = [...entry.messages];
+            state.conversationId = id;
             state.isLoading = false;
-            state.history.unshift(entry);
             render();
         }
 
         function addMessage(role, text) {
             state.conversation.push({ role, text });
+
+            // If this is a new conversation (no ID yet), create one on first message
+            if (state.conversationId === null && state.conversation.length > 0) {
+                state.conversationId = Date.now();
+            }
+
             updateHistoryWithCurrentConversation();
             renderMessages();
             renderHistory();
@@ -676,10 +686,28 @@
         }
 
         function updateHistoryWithCurrentConversation() {
-            if (state.history.length > 0) {
-                state.history[0].messages = [...state.conversation];
-                const title = deriveConversationTitle(state.conversation, `Conversation ${state.conversationCounter}`);
-                state.history[0].title = title;
+            if (state.conversationId === null) return;
+
+            const existingIndex = state.history.findIndex(entry => entry.id === state.conversationId);
+
+            if (existingIndex !== -1) {
+                // Update existing conversation
+                const entry = state.history[existingIndex];
+                entry.messages = [...state.conversation];
+                const title = deriveConversationTitle(state.conversation, `Conversation`);
+                entry.title = title;
+
+                // Move to top
+                state.history.splice(existingIndex, 1);
+                state.history.unshift(entry);
+            } else {
+                // Create new entry in history
+                const title = deriveConversationTitle(state.conversation, `Conversation`);
+                state.history.unshift({
+                    id: state.conversationId,
+                    title,
+                    messages: [...state.conversation]
+                });
             }
         }
 
@@ -728,12 +756,15 @@
                 return;
             }
 
-            historyList.innerHTML = state.history.map((entry, index) => `
-                <div class="history-item" data-index="${index}">${entry.title}</div>
+            historyList.innerHTML = state.history.map((entry) => `
+                <div class="history-item" data-id="${entry.id}">${entry.title}</div>
             `).join("");
 
             historyList.querySelectorAll(".history-item").forEach(item => {
-                item.addEventListener("click", () => resumeConversation(parseInt(item.dataset.index)));
+                item.addEventListener("click", () => {
+                    const id = parseInt(item.dataset.id);
+                    resumeConversation(id);
+                });
             });
         }
 
